@@ -26,7 +26,7 @@ Registro de mi formación en SQL orientada al rol de **Analista de Datos**, sigu
 | 1 | Teoría de bases de datos | ✅ |
 | 2 | Preparación del entorno | ✅ |
 | 3.1 – 3.4 | `SELECT`, `FROM`, alias, cálculos, `WHERE`, manejo de `NULL` | ✅ |
-| 3.5 – 3.9 | `ORDER BY`, `GROUP BY`, `HAVING`, `DISTINCT`, `LIMIT`, orden de ejecución | ⬜ |
+| 3.5 – 3.9 | `ORDER BY`, `GROUP BY`, `HAVING`, `DISTINCT`, `LIMIT`, orden de ejecución | 🟡 |
 | 4 | DDL: `CREATE`, `ALTER`, `DROP`, restricciones | ⬜ |
 | 5 | DML: `INSERT`, `UPDATE`, `DELETE`, transacciones | ⬜ |
 
@@ -39,6 +39,8 @@ Registro de mi formación en SQL orientada al rol de **Analista de Datos**, sigu
 - Manejo correcto de `NULL` (`IS NULL`, `IS DISTINCT FROM`) y de sus trampas con `<>`.
 - Precisión numérica: `NUMERIC` frente a `FLOAT`, división entera, redondeo solo en la presentación.
 - Reglas de negocio en SQL (cálculo de IGV, comisiones, márgenes).
+- Ordenamiento, agregaciones (`COUNT`, `SUM`, `AVG`, `MIN`, `MAX`), `GROUP BY` y `HAVING`.
+- Orden lógico de ejecución de una consulta.
 - Scripts reejecutables respetando la integridad referencial.
 
 ---

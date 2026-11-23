@@ -3,7 +3,7 @@
 > Léelo cada día en 5 minutos. Primero responde el **autoexamen** del final sin mirar; después repasa lo que fallaste.
 > Archivo acumulativo: crece con cada lección.
 
-**Cubre hasta:** Fase 1 · Temas 1, 2 y 3.1 – 3.4
+**Cubre hasta:** Fase 1 · Temas 1, 2 y 3.1 – 3.9
 
 ---
 
@@ -112,6 +112,32 @@ Solo `SELECT` y `FROM` son obligatorias.
   ```
 - 🚨 Cada vez que escribas `<>` o `NOT`, pregúntate: **¿esta columna puede tener NULL?**
 
+### Ordenar, agrupar y limitar (3.5 – 3.8) · [detalle en Sesión 02](2026-11-22_sesion_02.md)
+| Regla | Frase para recordar |
+|---|---|
+| Sin `ORDER BY` el orden no está garantizado | 🎲 *"Sin ORDER BY no hay orden."* |
+| NULL al ordenar: último con `ASC`, primero con `DESC` | 🎈 *"El NULL es el más grande."* (`NULLS FIRST` / `NULLS LAST`) |
+| Desempatar con una segunda columna | 🎯 *"Si dos filas pueden empatar, desempata."* |
+| `COUNT(*)` / `COUNT(col)` / `COUNT(DISTINCT col)` | 🔢 *"Estrella cuenta filas; columna cuenta valores; DISTINCT cuenta valores únicos."* |
+| Columnas del SELECT con `GROUP BY` | 📦 *"Lo que no está agregado, va agrupado."* |
+| NULL en `GROUP BY` | 📥 *"El NULL tiene su propia caja."* |
+| WHERE frente a HAVING | 🚪 *"WHERE filtra filas antes; HAVING filtra grupos después."* |
+| Alias en `HAVING` | ❌ En PostgreSQL se repite la expresión |
+| `DISTINCT` con varias columnas | 👯 *"DISTINCT mira la fila completa."* |
+| `LIMIT` | 🎰 *"LIMIT sin ORDER BY es una lotería."* |
+
+### Leer bien el enunciado (errores de la Sesión 02)
+- ⬆️ *"Si no dicen el orden, es ascendente."*
+- 🔎 *"Filtra lo que dice el enunciado, no lo que se muestra."*
+- 🚫 *"No agregues filtros que no te pidieron."* Antes de excluir un NULL, pregúntate qué significa.
+- 🏷️ *"El nombre del alias lo pone la especificación."*
+- 🔢 *"Para contar filas: COUNT(*)."* `COUNT(columna)` solo para excluir NULL a propósito.
+
+### Orden de ejecución (3.9) ⭐
+> 🦘 **"El SELECT salta al quinto lugar":** FROM → WHERE → GROUP BY → HAVING → **SELECT** → ORDER BY → LIMIT
+> 👨‍🍳 Despensa → descartar ingredientes → bandejas → descartar bandejas → **emplatar (alias)** → ordenar → servir.
+> Alias: ❌ WHERE · ❌ HAVING · ✅ ORDER BY.
+
 ### Negocio: IGV
 > 🧾 **"Para quitar el IGV, divides; para ponerlo, multiplicas."**
 
@@ -185,4 +211,19 @@ Porque cambia la pregunta: un valor como 6.003 se redondearía a 6.00 y quedarí
 <details><summary>10. ¿En qué orden se borran las tablas <code>clientes</code> y <code>pedidos</code>? ¿Por qué?</summary>
 
 Primero `pedidos` (hija) y después `clientes` (padre): la FK impide borrar un padre que todavía tiene hijos.
+</details>
+
+<details><summary>11. Escribe el orden de ejecución de las cláusulas.</summary>
+
+FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT
+</details>
+
+<details><summary>12. ¿WHERE o HAVING para <code>COUNT(*) >= 2</code>?</summary>
+
+HAVING: es una condición sobre grupos.
+</details>
+
+<details><summary>13. ¿Dónde aparece un NULL con <code>ORDER BY col ASC</code>?</summary>
+
+Al final (en PostgreSQL, NULL es el valor más grande).
 </details>
